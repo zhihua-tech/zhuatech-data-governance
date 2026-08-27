@@ -36,3 +36,20 @@
 | `hasClassification` | boolean | 已完成分级分类 |
 
 接口统一返回 `ApiResponse`；业务冲突使用 HTTP 409，参数错误使用 400，未认证使用 401，无权限使用 403。
+
+## V2.0 数据治理专业接口
+
+| 方法 | 路径 | 说明 |
+| --- | --- | --- |
+| GET | `/api/governance/dashboard` | 查询资产、质量任务、问题与血缘总览 |
+| POST | `/api/governance/assets` | 创建数据资产 |
+| POST | `/api/governance/assets/{id}/submit` | 提交资产评审 |
+| POST | `/api/admin/governance/assets/{id}/publish` | 管理员发布已达标资产 |
+| POST | `/api/governance/assets/{id}/rules` | 配置质量规则 |
+| POST | `/api/governance/assets/{id}/quality-runs` | 执行质量检测并自动生成问题 |
+| POST | `/api/governance/lineage` | 登记上下游血缘 |
+| POST | `/api/governance/issues/{id}/assign` | 分派治理问题 |
+| POST | `/api/governance/issues/{id}/resolve` | 提交问题处理结果 |
+| POST | `/api/governance/issues/{id}/close` | 验收并关闭问题 |
+
+资产发布要求责任人、分级分类和至少一条质量规则均已完备。质量得分低于阈值时，系统自动建立治理问题并进入分派、处理、验收闭环。

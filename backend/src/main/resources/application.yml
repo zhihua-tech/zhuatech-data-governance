@@ -1,6 +1,6 @@
 # Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/
 server:
-  port: 8601
+  port: 8080
 spring:
   datasource:
     url: ${DB_URL:jdbc:mysql://localhost:3306/zhuatech_datagovernance?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&createDatabaseIfNotExist=true}
