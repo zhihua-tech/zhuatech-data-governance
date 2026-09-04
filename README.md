@@ -53,6 +53,10 @@ cd .. && cp .env.example .env && docker compose up --build
 
 开发演示账号：`admin / admin123`、`operator / operator123`。生产环境必须通过环境变量替换全部默认凭据。
 
+## 可信数据产品认证
+
+新增数据产品发布前的企业认证门禁，统一校验数据质量、敏感数据分级、访问策略、上游契约、业务术语、端到端血缘、保留规则和数据管理员审批。详见[企业数据产品认证](docs/ENTERPRISE_DATA_PRODUCT_CERTIFICATION.md)。
+
 ## 许可与商业授权
 
 Copyright © 2026 上海如静知华信息科技有限公司。
