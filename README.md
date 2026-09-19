@@ -6,6 +6,8 @@ ZhuaTech DGOV 是知华科技（上海如静知华信息科技有限公司）发
 
 [知华科技官网](https://www.zhuatech.cn/) · [架构说明](docs/ARCHITECTURE.md) · [API 文档](docs/API.md) · [企业能力](docs/ENTERPRISE.md) · [测试说明](docs/TESTING.md)
 
+本次新增独立质量规则执行接口：按数据集总行数计算每条规则通过率与失败行数，并依据 `BLOCKER / MAJOR / MINOR` 严重度形成加权质量分和数据发布门禁。
+
 ![企业数据治理平台产品界面示意](docs/images/product-overview.svg)
 
 ## 业务模块

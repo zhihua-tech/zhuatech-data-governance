@@ -16,6 +16,7 @@
 | GET | `/records/export.csv` | 导出 UTF-8 CSV |
 | GET | `/sla-summary` | SLA、逾期、风险和人员工作量 |
 | POST | `/domain/decision` | 执行企业数据治理平台专属领域规则 |
+| POST | `/advanced/data-governance/quality-run` | 执行多规则质量检测并返回加权得分与发布门禁 |
 | GET/POST | `/enterprise/controls` | 企业控制项查询与幂等创建 |
 | POST | `/enterprise/controls/{id}/submit` | 提交复核 |
 | POST | `/admin/enterprise/controls/{id}/review` | 管理员审批或驳回 |
