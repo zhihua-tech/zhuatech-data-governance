@@ -1,7 +1,16 @@
 /* Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ */
 package cn.zhuatech.datagovernance;import org.junit.jupiter.api.Test;import org.springframework.beans.factory.annotation.Autowired;import org.springframework.boot.test.context.SpringBootTest;import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;import org.springframework.http.MediaType;import org.springframework.test.web.servlet.MockMvc;import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @SpringBootTest @AutoConfigureMockMvc class DataQualityExecutionApiTests{@Autowired MockMvc mvc;static final String BODY="""
  {"datasetCode":"CUSTOMER","rowCount":1000,"rules":[{"ruleCode":"EMAIL_REQUIRED","severity":"BLOCKER","passedRows":940,"minimumPassRate":98},{"ruleCode":"PHONE_FORMAT","severity":"MAJOR","passedRows":990,"minimumPassRate":95}]}
  """;
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Test void blocksReleaseOnBlockingRuleFailure()throws Exception{mvc.perform(post("/api/advanced/data-governance/quality-run").with(httpBasic("operator","operator123")).contentType(MediaType.APPLICATION_JSON).content(BODY)).andExpect(status().isOk()).andExpect(jsonPath("$.data.decision").value("BLOCK_RELEASE")).andExpect(jsonPath("$.data.blockingFailures").value(1)).andExpect(jsonPath("$.data.rules[0].failedRows").value(60));}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Test void validatesPassedRowsAgainstDataset()throws Exception{mvc.perform(post("/api/advanced/data-governance/quality-run").with(httpBasic("operator","operator123")).contentType(MediaType.APPLICATION_JSON).content(BODY.replace("940","1200"))).andExpect(status().isBadRequest());}}

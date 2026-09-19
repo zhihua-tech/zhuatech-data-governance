@@ -4,15 +4,24 @@ package cn.zhuatech.datagovernance.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 class DataProductCertificationServiceTest {
     private final DataProductCertificationService service = new DataProductCertificationService();
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void certifiesTrustedDataProduct() {
         var result = service.assess(new DataProductCertificationService.Request("DP-100", true, true, true,
                 true, true, true, true, true, true, true));
         assertThat(result.decision()).isEqualTo(DataProductCertificationService.Decision.CERTIFY);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void routesMetadataGapsToRemediation() {
         var result = service.assess(new DataProductCertificationService.Request("DP-101", false, false, false,
                 true, true, true, false, true, false, true));
@@ -20,6 +29,9 @@ class DataProductCertificationServiceTest {
         assertThat(result.decision()).isEqualTo(DataProductCertificationService.Decision.REMEDIATE);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void blocksUntrustedDataProduct() {
         var result = service.assess(new DataProductCertificationService.Request("", false, false, false,
                 false, false, false, false, false, false, false));

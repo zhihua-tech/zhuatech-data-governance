@@ -3,10 +3,25 @@ package cn.zhuatech.datagovernance.service;
 import jakarta.validation.constraints.*;
 import org.springframework.stereotype.Service;
 import java.util.*;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service public class DomainDecisionService {
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public DecisionResult assess(DecisionRequest request) { int score=(int)Math.round((request.completenessRate()+request.accuracyRate()+request.lineageCoverage())/3); List<String> actions=new ArrayList<>(); if(!request.hasOwner()){score-=20;actions.add("指定数据责任人");} if(!request.hasClassification()){score-=20;actions.add("完成数据分级分类");} if(request.issueCount()>0){score-=Math.min(20,request.issueCount()*3);actions.add("关闭未解决数据质量问题");} return result(score,actions,"READY","REMEDIATE","BLOCKED",Map.of("completenessRate",request.completenessRate(),"accuracyRate",request.accuracyRate(),"lineageCoverage",request.lineageCoverage(),"openIssues",request.issueCount())); }
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  private DecisionResult result(int raw,List<String> actions,String good,String warn,String bad,Map<String,Object> metrics) { int score=Math.max(0,Math.min(100,raw));String decision=score>=80?good:score>=50?warn:bad;return new DecisionResult(decision,score,metrics,List.copyOf(actions)); }
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  private DecisionResult riskResult(int raw,List<String> actions,String good,String warn,String bad,Map<String,Object> metrics) { int score=Math.max(0,Math.min(100,raw));String decision=score>=70?bad:score>=40?warn:good;return new DecisionResult(decision,score,metrics,List.copyOf(actions)); }
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public record DecisionRequest(
         @NotBlank String datasetCode,
         @DecimalMin("0") @DecimalMax("100") double completenessRate,
@@ -15,5 +30,8 @@ import java.util.*;
         @PositiveOrZero int issueCount,
         boolean hasOwner,
         boolean hasClassification) {}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public record DecisionResult(String decision,int score,Map<String,Object> metrics,List<String> actions) {}
 }
