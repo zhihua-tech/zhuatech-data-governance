@@ -1,0 +1,88 @@
+{
+  "slug": "data-governance",
+  "title": "数据质量指标与容忍阈值预检",
+  "fields": [
+    {
+      "key": "rule_no",
+      "label": "规则编号",
+      "type": "ID",
+      "length": 200
+    },
+    {
+      "key": "dataset",
+      "label": "数据集",
+      "type": "ID",
+      "length": 200
+    },
+    {
+      "key": "field",
+      "label": "字段",
+      "type": "ID",
+      "length": 200
+    },
+    {
+      "key": "total_count",
+      "label": "总记录数",
+      "type": "INTEGER",
+      "length": 200,
+      "scale": 0
+    },
+    {
+      "key": "null_count",
+      "label": "空值数",
+      "type": "INTEGER",
+      "length": 200,
+      "scale": 0
+    },
+    {
+      "key": "duplicate_count",
+      "label": "重复数",
+      "type": "INTEGER",
+      "length": 200,
+      "scale": 0
+    }
+  ],
+  "unique": [
+    [
+      "rule_no"
+    ],
+    [
+      "dataset",
+      "field"
+    ]
+  ],
+  "rules": [
+    {
+      "op": "LE",
+      "args": [
+        "null_count",
+        "total_count"
+      ],
+      "code": "NULL_COUNT",
+      "message": "空值数不能超过总记录数",
+      "bad": {
+        "null_count": "1001"
+      }
+    },
+    {
+      "op": "LE",
+      "args": [
+        "duplicate_count",
+        "total_count"
+      ],
+      "code": "DUPLICATE_COUNT",
+      "message": "重复数不能超过总记录数",
+      "bad": {
+        "duplicate_count": "1001"
+      }
+    }
+  ],
+  "sampleCsv": "rule_no,dataset,field,total_count,null_count,duplicate_count\nDQ-001,orders,customerId,1000,5,2\n",
+  "limits": {
+    "rows": 500,
+    "bytes": 262144,
+    "columns": 32,
+    "cellCharacters": 4000
+  },
+  "scope": "Read-only batch validation; no persistence, reference-master lookup or full production certification."
+}
