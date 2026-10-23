@@ -1,0 +1,57 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "REVIEW",
+      "unexecutedRules": "#0",
+      "unresolvedFailures": "#0"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "waiverExpires": "2026-10-22"
+    },
+    "expected": {
+      "decision": "HOLD",
+      "unresolvedFailures": "#2"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "executedRules": "19"
+    },
+    "expected": {
+      "decision": "HOLD",
+      "unexecutedRules": "#1"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "failedRules": "0",
+      "waivedFailures": "0"
+    },
+    "expected": {
+      "decision": "PASS"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "waivedFailures": "3"
+    },
+    "expected": {},
+    "error": true
+  },
+  {
+    "patch": {
+      "waiverExpires": "2026-10-23"
+    },
+    "expected": {
+      "decision": "REVIEW"
+    },
+    "error": false
+  }
+]

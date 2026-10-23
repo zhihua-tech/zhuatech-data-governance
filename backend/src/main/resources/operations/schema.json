@@ -1,0 +1,85 @@
+{
+  "slug": "data-governance",
+  "title": "数据质量规则执行覆盖与豁免到期",
+  "fields": [
+    {
+      "key": "id",
+      "label": "记录编号",
+      "type": "ID"
+    },
+    {
+      "key": "requiredRules",
+      "label": "应执行规则数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "1",
+      "max": "1000000"
+    },
+    {
+      "key": "executedRules",
+      "label": "已执行规则数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    },
+    {
+      "key": "failedRules",
+      "label": "失败规则数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    },
+    {
+      "key": "waivedFailures",
+      "label": "已批准豁免失败数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    },
+    {
+      "key": "waiverExpires",
+      "label": "豁免到期日",
+      "type": "DATE"
+    }
+  ],
+  "columns": [
+    {
+      "key": "unexecutedRules",
+      "label": "未执行规则"
+    },
+    {
+      "key": "unresolvedFailures",
+      "label": "未有效豁免失败"
+    },
+    {
+      "key": "executionCoveragePct",
+      "label": "执行覆盖%"
+    },
+    {
+      "key": "waiverExpired",
+      "label": "临时豁免过期"
+    }
+  ],
+  "description": "同时核对要求规则、已执行规则、失败数和已批准临时豁免，识别豁免过期，防止把未运行当作通过。",
+  "owner": "上海如静知华信息科技有限公司",
+  "website": "https://www.zhuatech.cn/",
+  "authorization": "商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。",
+  "version": 1,
+  "notes": "输入均须为已获授权的同口径数据。金额固定人民币元；比例为百分数。核算结果只用于复核，未审批、未写库、未发起外部调用，也未触发付款、签名、资料销毁或设备控制。建议不构成法律、安全、会计或碳核证结论。",
+  "sample": {
+    "asOf": "2026-10-23",
+    "records": [
+      {
+        "id": "ITEM-001",
+        "requiredRules": "20",
+        "executedRules": "20",
+        "failedRules": "2",
+        "waivedFailures": "2",
+        "waiverExpires": "2026-11-01"
+      }
+    ]
+  }
+}
